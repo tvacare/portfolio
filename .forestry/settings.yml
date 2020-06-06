@@ -14,7 +14,7 @@ sections:
   label: Posts
   create: all
   match: "**/*"
-  exclude: drafts
+  exclude: geneology, self, song, sunflower, walking
   templates:
   - blog
 - type: document
