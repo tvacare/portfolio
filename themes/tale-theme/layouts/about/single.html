@@ -3,25 +3,15 @@
 <main>
 	<div class="info__post">
 		{{ .Content }}
-		<ul>
-				<li>
-					<h2>
-						<a href="mailto:{{.Params.contact_info.email}}">Email: {{ .Params.contact_info.email }}</a>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<a href="https://twitter.com/{{.Params.contact_info.twitter_handle}}">
-							Twitter: @{{.Params.contact_info.twitter_handle}}
-						</a>
-					</h2>
-				</li>
-				<li>
-					<h2>
-						<a href="https://github.com/{{.Params.contact_info.github_handle }}">Github: {{.Params.contact_info.github_handle }}</a>
-					</h2>
-				</li>
-			</ul>
+		
+		<a href="https://github.com/{{.Params.contact_info.github_handle }}">
+			<img src="/images/GitHub-Mark-120px-plus.png" width="32" height="32"/>
+		</a>
+	
+		<a href="https://linkedin.com/in/{{.Params.contact_info.linkedin_handle}}">
+			<img src="/images/linkedin-logo.png" width="32" height="32"/>
+		</a>
+	
 	</div>
 </main>
 
