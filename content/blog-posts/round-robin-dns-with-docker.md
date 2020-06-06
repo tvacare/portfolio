@@ -1,9 +1,9 @@
 ---
-title: "Round Robin DNS with Docker"
-date: 2018-11-10T23:00:00Z
+title: Round Robin DNS with Docker
+date: 2018-11-10T23:00:00.000+00:00
 type: blog
 author: Thiago Vacare
-hero: ""
+hero: "/images/docker.png"
 
 ---
 For starters, we need to know what is round-robin DNS and how it works:
