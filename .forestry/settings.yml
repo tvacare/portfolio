@@ -10,11 +10,10 @@ sections:
   path: content/about/info.md
   label: Info Page
 - type: directory
-  path: content
+  path: content/blog-posts
   label: Posts
   create: all
-  match: "**/*"
-  exclude: geneology, self, song, sunflower, walking
+  match: "*"
   templates:
   - blog
 - type: document
