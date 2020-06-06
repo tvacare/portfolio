@@ -10,10 +10,11 @@ sections:
   path: content/about/info.md
   label: Info Page
 - type: directory
-  path: content/blog-posts
+  path: content
   label: Posts
   create: all
   match: "**/*"
+  exclude: drafts
   templates:
   - blog
 - type: document
