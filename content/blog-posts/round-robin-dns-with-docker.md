@@ -6,17 +6,6 @@ title = "Round Robin DNS with Docker"
 type = "blog"
 
 +++
-    ---
-    date: 2018-11-11T12:28:00+03:00
-    title: Round Robin DNS with Docker
-    authors: ['tvacare']
-    categories:
-      - Docker
-    tags:
-      - Docker
-    slug: posts
-    ---
-    
     For starters, we need to know what is round-robin DNS and how it works with DNS
     
     > Round-robin load balancing is one of the simplest methods for distributing client requests across a group of servers. Going down the list of servers in the group, the round-robin load balancer forwards a client request to each server in turn. When it eaches the end of the list, the load balancer loops back and goes down the list again sends the next request to the first listed server, the one after that to the second server, and so on). -- [What Is Round-Robin Load Balancing?](https://www.nginx.com/resources/glossary/round-robin-load-balancing/)
