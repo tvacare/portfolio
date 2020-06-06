@@ -1,8 +1,8 @@
 +++
 author = "Thiago Vacare"
-date = 2020-06-01T22:00:00Z
+date = 2020-06-06T22:00:00Z
 hero = ""
-title = "test"
+title = "test-default-2"
 type = "blog"
 
 +++
