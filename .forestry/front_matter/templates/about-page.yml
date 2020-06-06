@@ -17,24 +17,20 @@ fields:
   type: field_group
   config: {}
   fields:
-  - name: twitter_handle
-    type: text
-    config:
-      required: false
-    label: Twitter Handle
-    description: Enter Twitter Handle Here
   - name: github_handle
     type: text
     config:
       required: false
     label: Github Handle
-    description: Enter github handle here
-  - name: email
+    description: <a href="https://github.com/tvacare" title="https://github.com/tvacare"
+      target="_blank">https://github.com/tvacare</a>
+  - name: linkedin_handle
     type: text
     config:
       required: false
-    label: Email
-    description: Enter contact email here
+    label: LinkedIn Handle
+    description: <a href="https://www.linkedin.com/in/tvacare/en" title="https://www.linkedin.com/in/tvacare/en"
+      target="_blank">https://www.linkedin.com/in/tvacare/en</a>
   label: contact info
   description: Enter contact info here
 pages:
