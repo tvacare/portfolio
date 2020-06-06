@@ -3,6 +3,6 @@
     {{if (eq .Title $aboutTitle) }}
         <h1><a href="{{ "/" | relURL }}">close</a></h1>
     {{ else }}
-        <h1><a href="{{ "about/info" | relURL }}">{{ i18n "about" }}</a></h1>
+        <h1><a href="{{ "/about/info" | relURL }}">{{ i18n "about" }}</a></h1>
     {{end}}
 </ul>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>
+				Round Robin DNS with Docker &middot; Thiago Vacare
+		</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+		
+		<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+	
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Thiago Vacare" />
+	</head>
+
+    
+    
+        <body >
+            		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h1 class="nav-title">Thiago Vacare</h1>
+				</a>
+				<ul>
+    
+    
+        <h1><a href="/about/info">about</a></h1>
+    
+</ul>
+			</div>
+		</nav>
+
+            
+
+<main>
+	<div class="post">
+		<figure class="post-hero">
+      <img src=/images/docker-1.jpg></img>
+ 
+</figure>
+		<div class="post__all-info">
+			<h1 class="post-title">Round Robin DNS with Docker</h1>
+			<div class="post-info">
+        <h3><time datetime="2018-11-10 23:00:00 &#43;0000 &#43;0000">November 10, 2018</time></h3>
+</div>
+		</div>
+		<div class="post__body"><p>For starters, we need to know what is round-robin DNS and how it works:</p>
+<blockquote>
+<p>Round-robin load balancing is one of the simplest methods for distributing client requests across a group of servers. Going down the list of servers in the group, the round-robin load balancer forwards a client request to each server in turn. When it eaches the end of the list, the load balancer loops back and goes down the list again sends the next request to the first listed server, the one after that to the second server, and so on). &ndash; <a href="https://www.nginx.com/resources/glossary/round-robin-load-balancing/">What Is Round-Robin Load Balancing?</a></p>
+</blockquote>
+<p>So knowing now what round-robin DNS is, let&rsquo;s do an practical example of how it works, using <a href="https://www.docker.com/">Docker</a>:</p>
+<ul>
+<li>The first step is to create a docker network, I will call it <code>round-robin</code>:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">  docker network create round-robin<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><ul>
+<li>Now let&rsquo;s run two elastic-search containers (passing in the &ldquo;&ndash;net&rdquo; flag pointing to the network just created and the alias &ldquo;search&rdquo;, that will be our DNS). There is no need to specify ports as we are not using the services outside the docker network:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker container run  --net round-robin --net-alias search --name elastic1 -d elasticsearch<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Open another terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker container run  --net round-robin --net-alias search --name elastic2 -d elasticsearch<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Use the following command to check if both containers are up and running:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker container ls<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><pre><code>CONTAINER ID    IMAGE              COMMAND                  CREATED         STATUS        PORTS                NAMES
+da83546da7a9    elasticsearch      &quot;/docker-entrypoint.…&quot;   1 minutes ago   Up 1 minutes  9200/tcp, 9300/tcp   elastic1
+131221be44b2    elasticsearch      &quot;/docker-entrypoint.…&quot;   1 minutes ago   Up 1 minutes  9200/tcp, 9300/tcp   elastic2
+</code></pre><ul>
+<li>Let&rsquo;s run the command <code>nslookup</code> inside the alpine container, using the same network and you&rsquo;ll see what happens:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker container run --rm --net round-robin alpine nslookup search<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Awesome! as you can see the DNS is pointing to both containers:</p>
+<pre><code>Name:      search
+Address 1: 172.27.0.2 elastic1.round-robin
+Address 2: 172.27.0.3 elastic2.round-robin
+</code></pre><ul>
+<li>Try to run <code>curl</code> from another container in the same network, you&rsquo;ll see that sometimes it points to a container and sometimes it points to the other (I used centos in the example but you can use any other linux image that contains <code>curl</code> command installed):</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker container run --rm --net round-robin centos curl -s search:9200<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>The result:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Cybelle&#34;</span>,
+  <span style="color:#f92672">&#34;cluster_name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>,
+  <span style="color:#f92672">&#34;cluster_uuid&#34;</span>: <span style="color:#e6db74">&#34;OvAZoQS8RJyhNgDkwX3pXA&#34;</span>,
+  <span style="color:#f92672">&#34;version&#34;</span>: {
+    <span style="color:#f92672">&#34;number&#34;</span>: <span style="color:#e6db74">&#34;2.4.6&#34;</span>,
+    <span style="color:#f92672">&#34;build_hash&#34;</span>: <span style="color:#e6db74">&#34;5376dca9f70f3abef96a77f4bb22720ace8240fd&#34;</span>,
+    <span style="color:#f92672">&#34;build_timestamp&#34;</span>: <span style="color:#e6db74">&#34;2017-07-18T12:17:44Z&#34;</span>,
+    <span style="color:#f92672">&#34;build_snapshot&#34;</span>: <span style="color:#66d9ef">false</span>,
+    <span style="color:#f92672">&#34;lucene_version&#34;</span>: <span style="color:#e6db74">&#34;5.5.4&#34;</span>
+  },
+  <span style="color:#f92672">&#34;tagline&#34;</span>: <span style="color:#e6db74">&#34;You Know, for Search&#34;</span>
+}
+</code></pre></div><p>And if you run again:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Omega&#34;</span>,
+  <span style="color:#f92672">&#34;cluster_name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>,
+  <span style="color:#f92672">&#34;cluster_uuid&#34;</span>: <span style="color:#e6db74">&#34;-by3GXTNQwOsAOgGSNRDkA&#34;</span>,
+  <span style="color:#f92672">&#34;version&#34;</span>: {
+    <span style="color:#f92672">&#34;number&#34;</span>: <span style="color:#e6db74">&#34;2.4.6&#34;</span>,
+    <span style="color:#f92672">&#34;build_hash&#34;</span>: <span style="color:#e6db74">&#34;5376dca9f70f3abef96a77f4bb22720ace8240fd&#34;</span>,
+    <span style="color:#f92672">&#34;build_timestamp&#34;</span>: <span style="color:#e6db74">&#34;2017-07-18T12:17:44Z&#34;</span>,
+    <span style="color:#f92672">&#34;build_snapshot&#34;</span>: <span style="color:#66d9ef">false</span>,
+    <span style="color:#f92672">&#34;lucene_version&#34;</span>: <span style="color:#e6db74">&#34;5.5.4&#34;</span>
+  },
+  <span style="color:#f92672">&#34;tagline&#34;</span>: <span style="color:#e6db74">&#34;You Know, for Search&#34;</span>
+}
+</code></pre></div><p>The round-robin DNS using docker is working and each time the algorithm points to a diffent container in order to load balance the requests.</p>
+<p>There are many other algorithms used for load-balancing, such as: Weighted Round Robin, Least Connection, Chained Failover and others. I recommend you to see the differences between these algorithms and understand what fits best for your case.</p>
+</div>
+		<div class="post__footer">
+					<h2>
+						<span>Written by:</span>
+								Thiago Vacare
+					</h2>
+		</div>
+	</div>
+</main>
+
+
+        </body>
+    
+</html>
