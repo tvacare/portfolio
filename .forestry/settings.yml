@@ -10,7 +10,7 @@ sections:
   path: content/about/info.md
   label: Info Page
 - type: directory
-  path: content/blog-posts
+  path: content
   label: Blog posts
   create: all
   match: "**/*"
