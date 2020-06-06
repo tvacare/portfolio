@@ -11,6 +11,8 @@ contact_info:
 type: ''
 
 ---
-## This is made with [Forestry](https://forestry.io/ "Forestry.io") & [Hugo](https://gohugo.io/ "Hugo SSG").
+## I’m Thiago Vacare. Software developer who has worked with Java, Node.js and currently Golang. I’m passionated about technology with a particular interest in the human side of software development. Studying code isn’t enough; you have to study the people behind the software, too. I have have also interest about coding practices. Coding is more about thinking than coding itself, and that’s one of the reasons I really like coding.
 
-## To get started, import this site into Forestry or checkout the repository [here](https://github.com/kendallstrautman/starter-blog-hugo "forestry starter blog hugo").
+I decided to create this blog to write about techonologies and I needed a way to write about new things whatever I discover or I’m working on. Hopefully someone will find it interesting.
+
+During my free time I enjoy riding my bike, running or playing the piano.
