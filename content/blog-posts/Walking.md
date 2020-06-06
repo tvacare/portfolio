@@ -4,6 +4,7 @@ date: 2019-07-11T20:11:17.000+00:00
 type: blog
 author: Henry Thoreau
 hero: "/images/heather-shevlin-3B_NrzTjajc-unsplash.jpg"
+draft: true
 
 ---
 Then it is that I appreciate the beauty and the glory of architecture, which itself never turns in, but forever stands out and erect, keeping watch over the slumberers.
