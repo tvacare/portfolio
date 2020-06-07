@@ -2,7 +2,7 @@
 author = ""
 date = 2020-06-07T20:00:00Z
 hero = "/images/97-things-every-programmer-should-know.jpg"
-title = "97 Things Every Programmer Should Know - Kevlin Henney (Editor) ⭐️⭐️⭐️⭐️"
+title = "97 Things Every Programmer Should Know - Kevlin Henney (Editor) ⭐️⭐️⭐️"
 type = "blog"
 
 +++
@@ -42,4 +42,4 @@ It's always good to keep in mind that we write code for people to understand and
 
 It's always possible to achieve more and to learn more, that's one of the things that I like the most about technology: it is constantly changing and evolving and so should we.
 
-Summarising, this is a great book with some very useful tips for good practices in Software Development that in fact every programmer should know. 
+Summarising, this is a good book with some useful tips for good practices in Software Development that in fact every programmer should know and it's also an easy read.
