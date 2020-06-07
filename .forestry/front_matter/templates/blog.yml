@@ -30,5 +30,3 @@ fields:
 - type: file
   name: hero
   label: Hero Image
-pages:
-- content/posts/test.md

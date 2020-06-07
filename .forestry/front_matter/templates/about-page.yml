@@ -29,5 +29,3 @@ fields:
     label: LinkedIn Handle
   label: contact info
   description: Enter contact info here
-pages:
-- content/about/info.md
