@@ -1,6 +1,6 @@
 +++
 author = "Thiago Vacare"
-hero = ""
+hero = "/images/books.jpg"
 title = "Book Reviews"
 type = "blog"
 
