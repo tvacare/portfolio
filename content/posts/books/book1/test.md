@@ -22,10 +22,6 @@ Well, we all have faced technical debt but we should really avoid it to the poin
 >
 > **_Chapter 5. Beauty Is in Simplicity - Jørn Ølmheim_**
 
-> "Betcha can't guess what it does!"he crowded
->
-> **_Chapter 58. A message to the Future - Linda Rising_**
-
 > People write software with people for people. It's a people business.
 >
 > **_Chapter 71. Read the Humanities - Keith Braithwaite_**
