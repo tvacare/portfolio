@@ -11,4 +11,4 @@ other = "Von"
 other = "am"
 
 [publishdate]
-other = "{{ .PublishDate.Day }}. {{ index $.Site.Data.months_de (printf \"%d\" .PublishDate.Month) }} {{ .PublishDate.Year }}"
+other = "{{ .PublishDate.Format \"Jan, 2006\" }}"

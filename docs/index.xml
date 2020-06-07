@@ -12,21 +12,21 @@
     
     
     <item>
+      <title>test2</title>
+      <link>/books/book2/test2/</link>
+      <pubDate>Sat, 06 Jun 2020 22:00:00 +0000</pubDate>
+      
+      <guid>/books/book2/test2/</guid>
+      <description>teste2</description>
+    </item>
+    
+    <item>
       <title>test</title>
       <link>/books/book1/test/</link>
       <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/books/book1/test/</guid>
       <description>teste</description>
-    </item>
-    
-    <item>
-      <title>test2</title>
-      <link>/books/book2/test2/</link>
-      <pubDate>Mon, 01 Jun 2020 22:00:00 +0000</pubDate>
-      
-      <guid>/books/book2/test2/</guid>
-      <description>teste2</description>
     </item>
     
     <item>

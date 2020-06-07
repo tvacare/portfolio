@@ -11,4 +11,4 @@ other = "Geschreven door"
 other = "op"
 
 [publishdate]
-other = "{{ .PublishDate.Day }} {{ index $.Site.Data.months_nl (printf \"%d\" .PublishDate.Month) }} {{ .PublishDate.Year }}"
+other = "{{ .PublishDate.Format \"Jan, 2006\" }}"

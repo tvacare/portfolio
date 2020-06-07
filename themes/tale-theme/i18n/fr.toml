@@ -11,4 +11,4 @@ other = "Écrit par"
 other = "le"
 
 [publishdate]
-other = "{{ .PublishDate.Day }} {{ index $.Site.Data.months_fr (printf \"%d\" .PublishDate.Month) }} {{ .PublishDate.Year }}"
+other = "{{ .PublishDate.Format \"Jan, 2006\" }}"
