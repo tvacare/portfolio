@@ -7,4 +7,4 @@ title = "test"
 type = "blog"
 
 +++
-teste
+teste deplo
