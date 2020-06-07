@@ -6,9 +6,37 @@
     <description>Recent content on Thiago Vacare</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jun 2020 22:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>test</title>
+      <link>/books/book1/test/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/books/book1/test/</guid>
+      <description>teste</description>
+    </item>
+    
+    <item>
+      <title>test2</title>
+      <link>/books/book2/test2/</link>
+      <pubDate>Mon, 01 Jun 2020 22:00:00 +0000</pubDate>
+      
+      <guid>/books/book2/test2/</guid>
+      <description>teste2</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/info/</link>
+      <pubDate>Sat, 06 Jul 2019 20:13:19 +0000</pubDate>
+      
+      <guid>/about/info/</guid>
+      <description>I’m Thiago Vacare, Software Engineer, I&amp;rsquo;ve been working mostly with Golang and Node.js in the last few years. I’m passionated about technology with a particular interest in the human side of software development. Studying code isn’t enough, you have to study the people behind the software, too. I also have interest in coding practices, system architecture and infrastructure. I decided to create this blog to write about technologies and I needed a way to write about new things whatever I discover or I’m working on.</description>
+    </item>
     
     <item>
       <title>Round Robin DNS with Docker</title>

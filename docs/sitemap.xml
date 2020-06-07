@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/books/</loc>
+    <lastmod>2020-06-06T22:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-06-06T22:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/books/book1/test/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/books/book2/test2/</loc>
+    <lastmod>2020-06-01T22:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/info/</loc>
+    <lastmod>2019-07-06T20:13:19+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2019-07-06T20:13:19+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/round-robin-dns-with-docker/</loc>
     <lastmod>2018-11-10T23:00:00+00:00</lastmod>
   </url>
@@ -13,10 +43,6 @@
   
   <url>
     <loc>/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>/</loc>
   </url>
   
 </urlset>
